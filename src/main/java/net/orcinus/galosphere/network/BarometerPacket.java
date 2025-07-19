@@ -1,12 +1,9 @@
 package net.orcinus.galosphere.network;
 
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.orcinus.galosphere.Galosphere;
-import net.orcinus.galosphere.GalosphereClient;
 
 public record BarometerPacket(int time) implements CustomPacketPayload {
     public static final Type<BarometerPacket> TYPE = new Type<>(Galosphere.id("barometer_info"));
@@ -18,11 +15,6 @@ public record BarometerPacket(int time) implements CustomPacketPayload {
 
     public void write(FriendlyByteBuf friendlyByteBuf) {
         friendlyByteBuf.writeInt(this.time);
-    }
-
-    public void receive(ClientPlayNetworking.Context context) {
-        Minecraft client = context.client();
-        client.execute(() -> GalosphereClient.clearWeatherTime = this.time);
     }
 
     @Override

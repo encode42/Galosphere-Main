@@ -53,8 +53,8 @@ import net.orcinus.galosphere.init.GEvents;
 import net.orcinus.galosphere.init.GItems;
 import net.orcinus.galosphere.init.GMenuTypes;
 import net.orcinus.galosphere.init.GModelLayers;
-import net.orcinus.galosphere.init.GNetwork;
 import net.orcinus.galosphere.init.GParticleTypes;
+import net.orcinus.galosphere.init.GClientNetwork;
 import net.orcinus.galosphere.items.SaltboundTabletItem;
 import org.jetbrains.annotations.Nullable;
 
@@ -126,7 +126,7 @@ public class GalosphereClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(GModelLayers.PRESERVED, PreservedModel::createBodyLayer);
 
         GEvents.clientInit();
-        GNetwork.init();
+        GClientNetwork.clientInit();
 
         ItemProperties.register(Items.CROSSBOW, Galosphere.id("glow_flare"), (stack, world, entity, i) -> {
             ChargedProjectiles chargedProjectiles = stack.get(DataComponents.CHARGED_PROJECTILES);

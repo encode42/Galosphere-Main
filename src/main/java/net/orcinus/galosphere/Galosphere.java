@@ -35,6 +35,7 @@ import net.orcinus.galosphere.init.GRecipeSerializers;
 import net.orcinus.galosphere.init.GSoundEvents;
 import net.orcinus.galosphere.init.GStructureProcessorTypes;
 import net.orcinus.galosphere.init.GVanillaIntegration;
+import net.orcinus.galosphere.init.GNetwork;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -69,6 +70,7 @@ public class Galosphere implements ModInitializer {
         GRecipeSerializers.init();
         GStructureProcessorTypes.init();
         GVanillaIntegration.init();
+        GNetwork.init();
 
         SpawnPlacements.register(GEntityTypes.SPARKLE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Sparkle::checkSparkleSpawnRules);
         SpawnPlacements.register(GEntityTypes.SPECTRE, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Spectre::checkSpectreSpawnRules);
